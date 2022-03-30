@@ -17,21 +17,14 @@ def get():
     return render_template("get.html")
 
 
-@socketio.on("on-led-1")
+@socketio.on("led")
 def handle_message(msg):
-    print('Message: ' + msg["data"])
+    ########## get two data : led number and status ###########
+    
+    # print('Message: ' + msg["led"] + )
     # r = requests.get('https://n64522.alavischool.ir/')
     # print(r)
     socketio.emit("led1", {"data": "Led is on"}, broadcast=True)
-    print("send message")
-
-
-@socketio.on("off-led-1")
-def handle_message(msg):
-    print('Message: ' + msg["data"])
-    # r = requests.get('https://n64522.alavischool.ir/nofile')
-    # print(r)
-    socketio.emit("led1", {"data": "Led is off"}, broadcast=True)
     print("send message")
 
 
